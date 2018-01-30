@@ -9,8 +9,7 @@ class ModelTrack(object):
     objectID=0
     
     def __init__(self, nameFile,dicAtt,mimeArg):
-        '''
-        Constructor 
+        ''' Constructor 
         +1 ID for each new track
         '''
         self.objectID+=1
@@ -26,7 +25,6 @@ class ModelTrack(object):
 
     def setMimeTypeList(self, value):
         self.__mimeTypeList = value
-
 
     def getNameFile(self):
         return self.__nameFile
