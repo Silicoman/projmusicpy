@@ -2,8 +2,8 @@
 class ModelTrack(object):
     '''
     Model to object Track with a dictionnary of metadata values:
-    -album;    -bpm;    -title
-    -artist    -tracknumber;
+    -album;    -bpm;    -title -albumartist
+    -artist    -tracknumber; -pathdir
     -genre;    -date;
     '''
     objectID=0
@@ -16,7 +16,6 @@ class ModelTrack(object):
         self.setNameFile(nameFile)
         self.setDicAttTrack(dicAtt)
         self.setMimeTypeList(mimeArg)
-
 
     # SETTER & GETTER & DOCSTRING
     def getMimeTypeList(self):
@@ -37,6 +36,13 @@ class ModelTrack(object):
         return self.__dicAttTrack
 
     def setDicAttTrack(self, value):
+        
+        # CASE WHERE tracknumber can be "3/10"
+        if ('tracknumber' in value.keys()):
+            try:
+                int(value['tracknumber'])
+            except:
+                value['tracknumber']=value['tracknumber'].split('/')[0]
         self.__dicAttTrack = value
 
     def delDicAttTrack(self):
